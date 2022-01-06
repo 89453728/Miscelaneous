@@ -5,19 +5,22 @@ import sys
 sys.path.append("../src")
 from csvreader import * 
 
-def printAll(al, index):
+def printAll(al,index):
         for idx,elem in enumerate(al):
-                
-                print("------------------------")
-                print("item " + str(idx))
+                print("--------------------------")
+                print("Element " + str(idx))
                 for a in index:
                         print(a + ": " + elem[a])
-                print("------------------------")
+                print("--------------------------")
 
 file_name = "test.csv"
+print("printing all the file")
 d = csvread(file_name)
-print("\n\nAll " + file_name + " items: \n")
+print("")
+print("raw print:")
 printAll(d,["nombre","edad"])
+print("printing 2 elements")
 d = csvread(file_name,2)
-print("\n\nTwo first items in " + file_name + ": \n")
+print("")
+print("raw print")
 printAll(d,["nombre","edad"])

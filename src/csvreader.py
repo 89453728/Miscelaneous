@@ -1,3 +1,19 @@
+## csvreader.py
+## Copyright (C) 2022-2023  Yassin Achengli <0619883460@uma.es>
+##
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+##
 ## csv format files reader and convert in object array
 ##
 ## INDEX
@@ -11,10 +27,8 @@
 ##              is the file to converse and lines are the lines to read
 ##              but if you let it blank, it will be set as -1 and csvread
 ##              is going to read all the file.
-##
 ## @example
 ## ## Using the file test.csv
-## 
 ## from csvreader import csvread
 ## file_name = "test.csv"
 ## data = csvread(file_name)
@@ -26,10 +40,8 @@
 ## print(data)
 ##      => [{'nombre': 'yassin', 'edad': '22'}]
 ## @end example
-##
 def error(msg):
         print("Error >> " + msg)
-
 def insert(All, element, index):
         if (len(element) != len(index)):
                 error("element and index must be the same size <insert error>")
@@ -39,7 +51,6 @@ def insert(All, element, index):
                 prob[index[a]] = element[a]
         All.append(prob)
         return All
-
 def csvread (file_name, lines = -1):
         if (lines == 0):
                 return False
@@ -60,14 +71,16 @@ def csvread (file_name, lines = -1):
                 for a in range(0,idx):
                         if(index_list[idx]==index_list[a]):
                                 error("error, two indexes are the same")
-                                return False
-         
+                                return False        
         line = 0
         buff = f.readline()
         if (lines == -1):
                 while (buff != ""):                    
                         buff = buff.replace(' ','')
                         buff = buff.replace('\n','')
+                        if(buff == ""):
+                                continue
+
                         elements = buff.split(',')               
                         temp = insert(All,elements,index_list)
                         if (temp != False):
