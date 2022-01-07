@@ -2,7 +2,7 @@
         Some  python tools 
 
 ### csvreader
-   > read csv files and return as objects array
+   > read csv files and return as "object array"
    > arguments: file_name (string) , lines (int)        
    > * file_name: the name of the file to extract 
    > the data
